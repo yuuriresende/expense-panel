@@ -4,7 +4,7 @@ import ExpenseDate from '../ExpenseDate/ExpenseDate';
 import Card from '../Card/Card';
 
 const ExpenseItem = (props) => {
-    const [title, setTitle] = useState(props.title);
+    
     
     //useState retorna um array de duas posições, a primeira eh um ponteiro referenciando o valor do estado atual
     //a segunda posição é uma função que poderemos chamar para definir um novo titulo
@@ -20,19 +20,16 @@ const ExpenseItem = (props) => {
     //podemos ver isso com um console.log("teste"): assim q a pagina carregar ele vai chamar console.log 4 vezes
     //(sao 4 componentes, react chama a funçao 4 vezes), assim q o estado de um mudar, apenas uma vez o console log ira apitar
     
-    const clickHandler = () =>{
-       setTitle("teste");
-       console.log(title)
-    }
+    
 
     return (
         <Card className='expense-item'>
             <ExpenseDate date={props.date} />
             <div className='expense-item__description'>
-                <h2>{title}</h2>
+                <h2>{props.title}</h2>
                 <div className='expense-item__price'>R${props.price}</div>
             </div>
-            <button onClick={clickHandler}>Change Title</button>
+            
         </Card>
     );
 }
