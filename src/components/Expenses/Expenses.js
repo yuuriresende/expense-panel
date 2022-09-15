@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import ExpenseItem from "../ExpenseItem/ExpenseItem";
 import Card from "../Card/Card";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFIlter";
+import ExpensesList from '../ExpensesList/ExpensesList';
 import './Expenses.css'
 
 const Expenses = (props) => {    
@@ -18,21 +18,14 @@ const Expenses = (props) => {
     })
     //retorna apenas os dados referentes ao ano pela verificação dos itens em expenses atraves do props
     //chamamos o filter passando um unico item que retorna os dados de acordo com a filtragem
+    
+    
+
     return(
-        <div>
-            
+        <div>            
             <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onSelectedYear={onSelectedYearHandler}/>
-                {filteredExpenses.length === 0 ? (<p>no expenses found</p>) : (
-                    filteredExpenses.map((expense) => (
-                        <ExpenseItem
-                            key={expense.id} 
-                            title={expense.title} 
-                            price={expense.price} 
-                            date={expense.date}
-                        />
-                    ))  
-                )}                             
+               <ExpensesList expenses={filteredExpenses}/>                   
             </Card>
         </div>
     );
